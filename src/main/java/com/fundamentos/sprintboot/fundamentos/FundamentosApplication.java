@@ -1,5 +1,8 @@
 package com.fundamentos.sprintboot.fundamentos;
 
+import com.fundamentos.sprintboot.fundamentos.bean.MyBean;
+import com.fundamentos.sprintboot.fundamentos.bean.MyBeanCar;
+import com.fundamentos.sprintboot.fundamentos.bean.MyBeanWithDependency;
 import com.fundamentos.sprintboot.fundamentos.component.ComponentDependency;
 import com.fundamentos.sprintboot.fundamentos.component.ComponentImplement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +15,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FundamentosApplication implements CommandLineRunner {
 
 	private ComponentDependency componentDependency;
+	private MyBean myBean;
+	private MyBeanWithDependency myBeanWithDependency;
+	private MyBeanCar myBeanCar;
 
 	@Autowired
-	public FundamentosApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency) {
+	public FundamentosApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency,
+								  MyBean myBean,
+								  MyBeanWithDependency myBeanWithDependency,
+								  MyBeanCar myBeanCar) {
 		this.componentDependency = componentDependency;
+		this.myBean = myBean;
+		this.myBeanWithDependency = myBeanWithDependency;
+		this.myBeanCar = myBeanCar;
 	}
 
 	public static void main(String[] args) {
@@ -27,5 +39,9 @@ public class FundamentosApplication implements CommandLineRunner {
 		componentDependency.saludar();
 		ComponentImplement componentImplement = new ComponentImplement();
 		componentImplement.saludar();
+		myBean.print();
+
+		myBeanWithDependency.printWithDependency();
+		System.out.println(myBeanCar.encender());
 	}
 }
