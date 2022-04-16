@@ -6,6 +6,7 @@ import com.fundamentos.sprintboot.fundamentos.bean.MyBeanWithDependency;
 import com.fundamentos.sprintboot.fundamentos.bean.MyBeanWithProperties;
 import com.fundamentos.sprintboot.fundamentos.component.ComponentDependency;
 import com.fundamentos.sprintboot.fundamentos.component.ComponentImplement;
+import com.fundamentos.sprintboot.fundamentos.pojo.UserPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -20,18 +21,21 @@ public class FundamentosApplication implements CommandLineRunner {
 	private MyBeanWithDependency myBeanWithDependency;
 	private MyBeanCar myBeanCar;
 	private MyBeanWithProperties myBeanWithProperties;
+	private UserPojo userPojo;
 
 	@Autowired
 	public FundamentosApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency,
 								  MyBean myBean,
 								  MyBeanWithDependency myBeanWithDependency,
 								  MyBeanCar myBeanCar,
-								  MyBeanWithProperties myBeanWithProperties) {
+								  MyBeanWithProperties myBeanWithProperties,
+								  UserPojo userPojo) {
 		this.componentDependency = componentDependency;
 		this.myBean = myBean;
 		this.myBeanWithDependency = myBeanWithDependency;
 		this.myBeanCar = myBeanCar;
 		this.myBeanWithProperties = myBeanWithProperties;
+		this.userPojo = userPojo;
 	}
 
 	public static void main(String[] args) {
@@ -49,6 +53,8 @@ public class FundamentosApplication implements CommandLineRunner {
 		System.out.println(myBeanCar.encender());
 
 		System.out.println(myBeanWithProperties.function());
+
+		System.out.println(userPojo.getEmail()+" - "+ userPojo.getPassword());
 	}
 
 }
