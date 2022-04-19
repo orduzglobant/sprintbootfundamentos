@@ -9,6 +9,7 @@ import com.fundamentos.sprintboot.fundamentos.component.ComponentImplement;
 import com.fundamentos.sprintboot.fundamentos.entity.User;
 import com.fundamentos.sprintboot.fundamentos.pojo.UserPojo;
 import com.fundamentos.sprintboot.fundamentos.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 @SpringBootApplication
 public class FundamentosApplication implements CommandLineRunner {
 
@@ -70,6 +72,10 @@ public class FundamentosApplication implements CommandLineRunner {
 
 
 		userRepository.findAndSort("J", Sort.by("id").descending()).forEach(user -> LOGGER.info("Usuario con metodo sort" +user));
+
+		userRepository.findByName("Jose").stream().forEach(user -> log.info("Usuario :"+user.getName()));
+
+		log.info(String.valueOf(userRepository.findByEmailAndName("daniela@domain.com","Daniela").orElseThrow(()-> new RuntimeException("No encontro al usuario"))));
 	}
 
 	private void ejemplosAnteriores() {
