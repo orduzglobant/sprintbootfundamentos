@@ -2,6 +2,8 @@ package com.fundamentos.sprintboot.fundamentos.configuration;
 
 import com.fundamentos.sprintboot.fundamentos.bean.MyBeanWithProperties;
 import com.fundamentos.sprintboot.fundamentos.bean.MyBeanWithPropertiesImplement;
+
+import com.fundamentos.sprintboot.fundamentos.entity.User;
 import com.fundamentos.sprintboot.fundamentos.pojo.UserPojo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -10,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
 
 @Configuration
 @EnableConfigurationProperties(UserPojo.class)
@@ -37,6 +40,7 @@ public class GeneralConfiguration {
         dataSourceBuilder.username("SA");
         dataSourceBuilder.password("");
         return dataSourceBuilder.build();
-
     }
+
+
 }

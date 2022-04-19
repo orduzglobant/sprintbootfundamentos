@@ -1,15 +1,21 @@
 package com.fundamentos.sprintboot.fundamentos.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
+import lombok.*;
+import org.springframework.boot.context.properties.ConstructorBinding;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity
 @Table(name = "user")
 @Data
+@ToString
+@ConstructorBinding
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -23,10 +29,17 @@ public class User {
     @Column(length = 50)
     private String email;
 
-    private LocalDate birtDate;
+    private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Post> posts = new ArrayList<>();
+
+    public User(String name, String email, LocalDate birthDate) {
+        this.name = name;
+        this.email = email;
+        this.birthDate = birthDate;
+    }
+
 
 }
