@@ -84,6 +84,9 @@ public class FundamentosApplication implements CommandLineRunner {
 		//		.stream().forEach(user -> log.info("findByBirthDateBetween:"+user.getName()));
 
 		userRepository.findByNameContainingOrderByIdDesc("Jo").stream().forEach(user -> log.info("findByNameLikeOrderByIdDesc"+user));
+
+		log.info(String.valueOf(userRepository.getAllByBirthDateAndEmail(LocalDate.of(2021,3,13),"john@domain.com").
+				orElseThrow(() -> new RuntimeException("No se encontro usuario getAllByBirthDateAndEmail"))));
 	}
 
 	private void ejemplosAnteriores() {
