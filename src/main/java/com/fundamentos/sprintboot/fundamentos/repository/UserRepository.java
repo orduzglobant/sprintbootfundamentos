@@ -3,6 +3,7 @@ package com.fundamentos.sprintboot.fundamentos.repository;
 import com.fundamentos.sprintboot.fundamentos.entity.User;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,22 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByName(String name);
 
     Optional<User> findByEmailAndName(String Email, String name);
+
+    List<User> findByNameLikeOrderByIdAsc(String name);
+
+    List<User> findByNameOrEmail(String name, String email);
+
+    List<User> findByBirthDateBetween(LocalDate birthDateStart, LocalDate birthDateEnd);
+
+    List<User> findByNameLikeOrderByIdDesc(String name);
+
+    List<User> findByNameContainingOrderByIdDesc(String name);
+
+
+
+
+
+
 
 
 

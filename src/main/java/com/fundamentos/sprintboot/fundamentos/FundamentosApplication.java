@@ -67,15 +67,23 @@ public class FundamentosApplication implements CommandLineRunner {
 	}
 
 	private void getInformationJpqlFromUser(String email){
-		LOGGER.info("USUARIO 1 CON QUERY JPQL" + userRepository.findByEmail(email)
-				.orElseThrow(() -> new RuntimeException("No se encontro el usuario")));
+		//LOGGER.info("USUARIO 1 CON QUERY JPQL" + userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("No se encontro el usuario")));
 
 
-		userRepository.findAndSort("J", Sort.by("id").descending()).forEach(user -> LOGGER.info("Usuario con metodo sort" +user));
+		//userRepository.findAndSort("J", Sort.by("id").descending()).forEach(user -> LOGGER.info("Usuario con metodo sort" +user));
 
-		userRepository.findByName("Jose").stream().forEach(user -> log.info("Usuario :"+user.getName()));
+		//userRepository.findByName("Jose").stream().forEach(user -> log.info("Usuario :"+user.getName()));
 
-		log.info(String.valueOf(userRepository.findByEmailAndName("daniela@domain.com","Daniela").orElseThrow(()-> new RuntimeException("No encontro al usuario"))));
+		//log.info(String.valueOf(userRepository.findByEmailAndName("daniela@domain.com","Daniela").orElseThrow(()-> new RuntimeException("No encontro al usuario"))));
+
+		//userRepository.findByNameLikeOrderByIdAsc("%J%").stream().forEach(user -> log.info("User name findByNameLikeOrderByIdAsc:"+user.getName()));
+
+		//userRepository.findByEmailAndName(null,"Jose").stream().forEach(user -> log.info("User name findByEmailAndName:"+user.getName()));
+
+		//userRepository.findByBirthDateBetween(LocalDate.of(2021,1,1),LocalDate.of(2021,3,15))
+		//		.stream().forEach(user -> log.info("findByBirthDateBetween:"+user.getName()));
+
+		userRepository.findByNameContainingOrderByIdDesc("Jo").stream().forEach(user -> log.info("findByNameLikeOrderByIdDesc"+user));
 	}
 
 	private void ejemplosAnteriores() {
