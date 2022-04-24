@@ -1,5 +1,6 @@
 package com.fundamentos.sprintboot.fundamentos.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class Post {
     private String description;
 
     @ManyToOne
+    @JsonBackReference
     private User user;
 
 
