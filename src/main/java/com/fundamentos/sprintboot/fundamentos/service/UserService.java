@@ -3,9 +3,6 @@ package com.fundamentos.sprintboot.fundamentos.service;
 import com.fundamentos.sprintboot.fundamentos.entity.User;
 import com.fundamentos.sprintboot.fundamentos.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -50,15 +47,4 @@ public class UserService {
                             }
                     ).orElseThrow(()->new RuntimeException("No se encontro usuario a modificar"));
     }
-
-    public List<User> findAll(PageRequest of) {
-        return userRepository.findAll(of).getContent();
-
-    }
-
-
-    /*public List<User> getAllPagination(int page, int size) {
-        return userRepository.findAll(PageRequest.of(page, size)).getContent();
-    }*/
-
 }
