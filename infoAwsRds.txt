@@ -1,6 +1,0 @@
-Identificador de instancias de bases de datos :db-servicesmachines-pod4
-Nuevo nombre del grupo de seguridad de VPC : Proyecto_Podb-vpc (vpc-015c84cd840995408)
-Grupos de seguridad de la VPC : pod4MachineServicesVPC (sg-0d758274a9aa43d75)
-Nombre de base de datos inicial : db-servicesmachines-pod4
-postgres
-*Globant2022
